@@ -22,7 +22,8 @@ class Type extends Component {
             transform={"translate(0, " + y + ")"}>
             {bills.map((bill, i) => {
                 let billWidth = this.calculateBillWidth(start, end, bill.start, bill.end, width)
-                bill = this.createBill(bill, name, height, billWidth, x, i)
+                let billHeight = this.calculateBillHeight(maxAmount, bill.amount, height)
+                bill = this.createBill(bill, name, billHeight, billWidth, x, i)
                 x += billWidth
                 return bill
             })}
@@ -48,6 +49,10 @@ class Type extends Component {
         let bs = Number(new Date(billStart))
         let be = Number(new Date(billEnd))
         return (be - bs) / (te - ts) * width
+    }
+
+    calculateBillHeight(maxAmount, amount, height) {
+        return amount / maxAmount * height
     }
 }
 
