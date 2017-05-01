@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 class Bill extends Component {
   render() {
     // let id = this.props.id
+    // let amountPerDay = this.props.amountPerDay
     // let amount = this.props.amount
     // let start = this.props.start
     // let end = this.props.end

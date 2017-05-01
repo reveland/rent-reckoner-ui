@@ -6,25 +6,26 @@ class Type extends Component {
         // let id = this.props.id
         let bills = this.props.bills
         let name = this.props.name
-        let maxAmount = this.props.maxAmount
+        let maxAmountPerDay = this.props.maxAmountPerDay
         let start = this.props.start
         let end = this.props.end
         let height = this.props.height
         let width = this.props.width
+        let x = this.props.x
         let y = this.props.y
-        return this.createType(bills, name, maxAmount, height, width, y, start, end)
+        return this.createType(bills, name, maxAmountPerDay, height, width, x, y, start, end)
     }
 
-    createType(bills, name, maxAmount, height, width, y, start, end) {
-        let x = 0
+    createType(bills, name, maxAmountPerDay, height, width, x, y, start, end) {
+        let billX = 0
         return <g
             className="Type"
-            transform={"translate(0, " + y + ")"}>
+            transform={"translate(" + x + ", " + y + ")"}>
             {bills.map((bill, i) => {
                 let billWidth = this.calculateBillWidth(start, end, bill.start, bill.end, width)
-                let billHeight = this.calculateBillHeight(maxAmount, bill.amount, height)
-                bill = this.createBill(bill, name, billHeight, billWidth, x, i)
-                x += billWidth
+                let billHeight = this.calculateBillHeight(maxAmountPerDay, bill.amountPerDay, height)
+                bill = this.createBill(bill, name, billHeight, billWidth, billX, i)
+                billX += billWidth
                 return bill
             })}
         </g>
@@ -34,7 +35,7 @@ class Type extends Component {
         return <Bill
             key={i}
             id={bill.id}
-            amount={bill.amount}
+            amountPerDay={bill.amountPerDay}
             start={bill.start}
             end={bill.end}
             height={height}
@@ -51,8 +52,8 @@ class Type extends Component {
         return (be - bs) / (te - ts) * width
     }
 
-    calculateBillHeight(maxAmount, amount, height) {
-        return amount / maxAmount * height
+    calculateBillHeight(maxAmountPerDay, amountPerDay, height) {
+        return amountPerDay / maxAmountPerDay * height
     }
 }
 
