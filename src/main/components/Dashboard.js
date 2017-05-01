@@ -8,7 +8,7 @@ class Dashboard extends Component {
     let end = this.props.end;
     let sumMaxAmountPerDay = this.props.sumMaxAmountPerDay
     let height = this.calculateHeight();
-    let width = this.calculateWidth()
+    let width = this.calculateWidth(start, end)
     return this.createDashboard(types, sumMaxAmountPerDay, start, end, height, width)
   }
 
@@ -29,7 +29,7 @@ class Dashboard extends Component {
     </svg>
   }
 
-  createType(type, height, width,x, y, i) {
+  createType(type, height, width, x, y, i) {
     return <Type
       key={i}
       id={type.id}
@@ -49,8 +49,10 @@ class Dashboard extends Component {
     return 400
   }
 
-  calculateWidth() {
-    return 600
+  calculateWidth(start, end) {
+    let s = Number(new Date(start))
+    let e = Number(new Date(end))
+    return (e - s) / 86400000 * 5
   }
 
   calculateTypeX(start, end, typeStart, width) {

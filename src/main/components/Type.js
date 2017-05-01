@@ -34,6 +34,7 @@ class Type extends Component {
     createBill(bill, type, height, width, x, i, typeId) {
         return <Bill
             key={i}
+            amount={bill.amount}
             id={bill.id}
             amountPerDay={bill.amountPerDay}
             start={bill.start}
@@ -41,6 +42,7 @@ class Type extends Component {
             height={height}
             width={width}
             x={x}
+            type={type}
             typeId={typeId}
         />
     }

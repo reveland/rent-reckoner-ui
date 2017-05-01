@@ -1,20 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class Bill extends Component {
   render() {
     // let id = this.props.id
     // let amountPerDay = this.props.amountPerDay
-    // let amount = this.props.amount
-    // let start = this.props.start
-    // let end = this.props.end
+    let amount = this.props.amount
+    let start = this.props.start
+    let end = this.props.end
+    let type = this.props.type
     let typeId = this.props.typeId
     let height = this.props.height
     let width = this.props.width
     let x = this.props.x
-    return this.createBill(typeId, height, width, x)
+    return this.createBill(typeId, height, width, x, start, end, amount, type)
   }
 
-  createBill(typeId, height, width, x) {
+  createBill(typeId, height, width, x, start, end, amount, type) {
     return <g
       className="Bill"
       transform={"translate(" + x + ", 0)"}>
@@ -22,7 +23,9 @@ class Bill extends Component {
         height={height}
         width={width}
         fill={this.getColor(typeId)}
-      />
+      >
+        <title>{type}, {amount}, {start}, {end}</title>
+      </rect>
     </g>
   }
 
