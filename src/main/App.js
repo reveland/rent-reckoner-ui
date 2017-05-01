@@ -1,22 +1,17 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Dashboard from './components/Dashboard.js';
 
 class App extends Component {
   render() {
+    let data = this.props.data;
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Dashboard />
-      </div>
-    );
+      <Dashboard
+        types={data.types}
+        sumMaxAmount={data.sumMaxAmount}
+        start={data.start}
+        end={data.end} />
+    )
   }
 }
 
