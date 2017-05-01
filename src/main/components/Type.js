@@ -3,7 +3,7 @@ import Bill from './Bill'
 
 class Type extends Component {
     render() {
-        // let id = this.props.id
+        let id = this.props.id
         let bills = this.props.bills
         let name = this.props.name
         let maxAmountPerDay = this.props.maxAmountPerDay
@@ -13,10 +13,10 @@ class Type extends Component {
         let width = this.props.width
         let x = this.props.x
         let y = this.props.y
-        return this.createType(bills, name, maxAmountPerDay, height, width, x, y, start, end)
+        return this.createType(bills, name, maxAmountPerDay, height, width, x, y, start, end, id)
     }
 
-    createType(bills, name, maxAmountPerDay, height, width, x, y, start, end) {
+    createType(bills, name, maxAmountPerDay, height, width, x, y, start, end, id) {
         let billX = 0
         return <g
             className="Type"
@@ -24,14 +24,14 @@ class Type extends Component {
             {bills.map((bill, i) => {
                 let billWidth = this.calculateBillWidth(start, end, bill.start, bill.end, width)
                 let billHeight = this.calculateBillHeight(maxAmountPerDay, bill.amountPerDay, height)
-                bill = this.createBill(bill, name, billHeight, billWidth, billX, i)
+                bill = this.createBill(bill, name, billHeight, billWidth, billX, i, id)
                 billX += billWidth
                 return bill
             })}
         </g>
     }
 
-    createBill(bill, type, height, width, x, i) {
+    createBill(bill, type, height, width, x, i, typeId) {
         return <Bill
             key={i}
             id={bill.id}
@@ -41,6 +41,7 @@ class Type extends Component {
             height={height}
             width={width}
             x={x}
+            typeId={typeId}
         />
     }
 
