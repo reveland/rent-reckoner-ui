@@ -5,10 +5,11 @@ import Dashboard from './components/Dashboard.js';
 class App extends Component {
   render() {
     let data = this.props.data;
+    console.log(data)
     return (
       <Dashboard
         types={data.types}
-        sumMaxAmountPerDay={data.sumMaxAmountPerDay}
+        maxMaxAmountPerDay={data.maxMaxAmountPerDay}
         start={data.start}
         end={data.end} />
     )

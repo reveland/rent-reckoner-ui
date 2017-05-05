@@ -2,9 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './main/App';
 import './index.css';
-import data from './test/data/rere_test_data_v1.json'
 
-ReactDOM.render(
-  <App data={data} />,
-  document.getElementById('root')
-);
+var url = 'http://localhost:5000/bills'
+fetch(url, {
+  method: "GET"
+}).then(response => {
+  response.json()
+    .then(json => {
+      ReactDOM.render(
+        <App data={json} />,
+        document.getElementById('root')
+      );
+    })
+})
+
