@@ -6,20 +6,20 @@ class Dashboard extends Component {
     let types = this.props.types;
     let start = this.props.start;
     let end = this.props.end;
-    let maxMaxAmountPerDay = this.props.maxMaxAmountPerDay
+    let sumMaxAmountPerDay = this.props.sumMaxAmountPerDay
     let height = this.calculateHeight();
     let width = this.calculateWidth(start, end)
-    return this.createDashboard(types, maxMaxAmountPerDay, start, end, height, width)
+    return this.createDashboard(types, sumMaxAmountPerDay, start, end, height, width)
   }
 
-  createDashboard(types, maxMaxAmountPerDay, start, end, height, width) {
+  createDashboard(types, sumMaxAmountPerDay, start, end, height, width) {
     let y = 0
     return <svg
       className="Dashboard"
       height={height}
       width={width}>
       {types.map((type, i) => {
-        let typeHeight = this.calculateTypeHeight(maxMaxAmountPerDay, type.maxAmountPerDay, height)
+        let typeHeight = this.calculateTypeHeight(sumMaxAmountPerDay, type.maxAmountPerDay, height)
         let typeWidth = this.calculateTypeWidth(start, end, type.start, type.end, width)
         let x = this.calculateTypeX(start, end, type.start, width)
         type = this.createType(type, typeHeight, typeWidth, x, y, i)
@@ -70,8 +70,8 @@ class Dashboard extends Component {
     return (te - ts) / (e - s) * width
   }
 
-  calculateTypeHeight(maxMaxAmountPerDay, typeMaxAmountPerDay, height) {
-    return typeMaxAmountPerDay / maxMaxAmountPerDay * height
+  calculateTypeHeight(sumMaxAmountPerDay, typeMaxAmountPerDay, height) {
+    return typeMaxAmountPerDay / sumMaxAmountPerDay * height
   }
 }
 

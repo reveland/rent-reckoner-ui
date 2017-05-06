@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <Dashboard
         types={data.types}
-        maxMaxAmountPerDay={data.maxMaxAmountPerDay}
+        sumMaxAmountPerDay={data.sumMaxAmountPerDay}
         start={data.start}
         end={data.end} />
     )
