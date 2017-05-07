@@ -46,13 +46,14 @@ class Dashboard extends Component {
   }
 
   calculateHeight() {
-    return 400
+    return 640
   }
 
   calculateWidth(start, end) {
-    let s = Number(new Date(start))
-    let e = Number(new Date(end))
-    return (e - s) / 86400000 * 5
+    // let s = Number(new Date(start))
+    // let e = Number(new Date(end))
+    // return (e - s) / 86400000 * 5
+    return 1600
   }
 
   calculateTypeX(start, end, typeStart, width) {

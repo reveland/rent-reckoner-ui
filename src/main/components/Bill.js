@@ -17,14 +17,13 @@ class Bill extends Component {
 
   createBill(typeId, height, width, x, start, end, amount, type) {
     return <g
-      className="Bill"
       transform={"translate(" + x + ", 0)"}>
       <rect
         height={height}
         width={width}
         fill={this.getColor(typeId)}
       >
-        <title>{type}, {amount}, {start}, {end}</title>
+        <title>{type}, {amount}, {start.substring(0, 10)}-{end.substring(0, 10)}</title>
       </rect>
     </g>
   }
