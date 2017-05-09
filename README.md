@@ -1,7 +1,12 @@
 ## Rent Reckoner
 
 ### Install
-you need npm to start the app. The easiest way to get npm is to install node.js ([download link](https://nodejs.org/en/download/))
+You need npm to start the app. The easiest way to get npm is to install node.js ([download link](https://nodejs.org/en/download/))
+
+Download dependencies
+```
+npm install
+```
 
 ### Run
 Run this command in the root directory 
