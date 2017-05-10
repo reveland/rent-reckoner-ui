@@ -7,7 +7,7 @@ let habitation_id = 0
 
 var url = 'http://localhost:5000/habitations/' + habitation_id + '/bills'
 fetch(url, {
-  method: "GET"
+  method: "GET",
 }).then(response => {
   response.json()
     .then(json => {
