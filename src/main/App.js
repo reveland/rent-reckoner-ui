@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-import Dashboard from './components/Dashboard.js';
+import TimeBoard from './components/TimeBoard.js';
 
 class App extends Component {
   render() {
-    let data = this.props.data;
+    let tables = this.props.tables;
     return (
-      <Dashboard
-        types={data.types}
-        sumMaxAmountPerDay={data.sumMaxAmountPerDay}
-        start={data.start}
-        end={data.end} />
+      <TimeBoard
+        tables={tables} />
     )
   }
 }

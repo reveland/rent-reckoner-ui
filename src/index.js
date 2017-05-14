@@ -11,8 +11,10 @@ fetch(url, {
 }).then(response => {
   response.json()
     .then(json => {
+      let tables = []
+      tables.push(json)
       ReactDOM.render(
-        <App data={json} />,
+        <App tables={tables} />,
         document.getElementById('root')
       );
     })

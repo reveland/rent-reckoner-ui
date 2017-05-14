@@ -4,14 +4,14 @@ body {
   font-family: sans-serif;
 }
 
-.Dashboard {
+.Table {
     border: 2px solid #000;
 }
 
-.Type {
+.Row {
     border: 2px solid #000;
 }
 
-.Bill {
+.Section {
     border: 2px solid #000;
 }

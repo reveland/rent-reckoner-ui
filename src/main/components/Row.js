@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Bill from './Bill'
+import Section from './Section'
 
-class Type extends Component {
+class Row extends Component {
     render() {
         let id = this.props.id
-        let bills = this.props.bills
+        let sections = this.props.sections
         let name = this.props.name
         let maxAmountPerDay = this.props.maxAmountPerDay
         let start = this.props.start
@@ -13,25 +13,24 @@ class Type extends Component {
         let width = this.props.width
         let x = this.props.x
         let y = this.props.y
-        return this.createType(bills, name, maxAmountPerDay, height, width, x, y, start, end, id)
+        return this.createRow(sections, name, maxAmountPerDay, height, width, x, y, start, end, id)
     }
 
-    createType(bills, name, maxAmountPerDay, height, width, x, y, start, end, id) {
+    createRow(sections, name, maxAmountPerDay, height, width, x, y, start, end, id) {
         return <g
-            className="Type"
+            className="Row"
             transform={"translate(" + x + ", " + y + ")"}>
-            {bills.map((bill, i) => {
-                let billWidth = this.calculateBillWidth(start, end, bill.start, bill.end, width)
-                let billHeight = this.calculateBillHeight(maxAmountPerDay, bill.amountPerDay, height)
-                let billX = this.calculateBillX(start, end, bill.start, width)
-                console.log(billWidth, billX)
-                bill = this.createBill(bill, name, billHeight, billWidth, billX, i, id)
+            {sections.map((bill, i) => {
+                let billWidth = this.calculateSectionWidth(start, end, bill.start, bill.end, width)
+                let billHeight = this.calculateSectionHeight(maxAmountPerDay, bill.amountPerDay, height)
+                let billX = this.calculateSectionX(start, end, bill.start, width)
+                bill = this.createSection(bill, name, billHeight, billWidth, billX, i, id)
                 return bill
             })}
         </g>
     }
 
-    calculateBillX(start, end, billStart, width) {
+    calculateSectionX(start, end, billStart, width) {
         let s = new Date(start)
         let e = new Date(end)
         let bs = new Date(billStart)
@@ -39,8 +38,8 @@ class Type extends Component {
         return width - ((e - bs) / (e - s) * (width))
     }
 
-    createBill(bill, type, height, width, x, i, typeId) {
-        return <Bill
+    createSection(bill, type, height, width, x, i, typeId) {
+        return <Section
             key={i}
             amount={bill.amount}
             id={bill.id}
@@ -55,7 +54,7 @@ class Type extends Component {
         />
     }
 
-    calculateBillWidth(start, end, billStart, billEnd, width) {
+    calculateSectionWidth(start, end, billStart, billEnd, width) {
         let ts = Number(new Date(start))
         let te = Number(new Date(end))
         let bs = Number(new Date(billStart))
@@ -63,11 +62,11 @@ class Type extends Component {
         return (be - bs) / (te - ts) * width
     }
 
-    calculateBillHeight(maxAmountPerDay, amountPerDay, height) {
+    calculateSectionHeight(maxAmountPerDay, amountPerDay, height) {
         return amountPerDay / maxAmountPerDay * height
     }
 }
 
 
 
-export default Type;
+export default Row;

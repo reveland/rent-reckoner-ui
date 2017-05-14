@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class Bill extends Component {
+class Section extends Component {
   render() {
     // let id = this.props.id
     // let amountPerDay = this.props.amountPerDay
@@ -12,10 +12,10 @@ class Bill extends Component {
     let height = this.props.height
     let width = this.props.width
     let x = this.props.x
-    return this.createBill(typeId, height, width, x, start, end, amount, type)
+    return this.createSection(typeId, height, width, x, start, end, amount, type)
   }
 
-  createBill(typeId, height, width, x, start, end, amount, type) {
+  createSection(typeId, height, width, x, start, end, amount, type) {
     return <g
       transform={"translate(" + x + ", 0)"}>
       <rect
@@ -37,4 +37,4 @@ class Bill extends Component {
   }
 }
 
-export default Bill;
+export default Section;
