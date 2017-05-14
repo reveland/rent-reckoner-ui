@@ -6,67 +6,66 @@ class Row extends Component {
         let id = this.props.id
         let sections = this.props.sections
         let name = this.props.name
-        let maxAmountPerDay = this.props.maxAmountPerDay
+        let maxSectionHeight = this.props.maxSectionHeight
         let start = this.props.start
         let end = this.props.end
         let height = this.props.height
         let width = this.props.width
         let x = this.props.x
         let y = this.props.y
-        return this.createRow(sections, name, maxAmountPerDay, height, width, x, y, start, end, id)
+        return this.createRow(sections, name, maxSectionHeight, height, width, x, y, start, end, id)
     }
 
-    createRow(sections, name, maxAmountPerDay, height, width, x, y, start, end, id) {
+    createRow(sections, name, maxSectionHeight, height, width, x, y, start, end, id) {
+        console.log("row", x, y)
         return <g
             className="Row"
             transform={"translate(" + x + ", " + y + ")"}>
-            {sections.map((bill, i) => {
-                let billWidth = this.calculateSectionWidth(start, end, bill.start, bill.end, width)
-                let billHeight = this.calculateSectionHeight(maxAmountPerDay, bill.amountPerDay, height)
-                let billX = this.calculateSectionX(start, end, bill.start, width)
-                bill = this.createSection(bill, name, billHeight, billWidth, billX, i, id)
-                return bill
+            {sections.map((section, i) => {
+                let sectionWidth = this.calculateSectionWidth(start, end, section.start, section.end, width)
+                let sectionHeight = this.calculateSectionHeight(maxSectionHeight, section.sectionHeight, height)
+                let sectionX = this.calculateSectionX(start, end, section.start, width)
+                section = this.createSection(section, name, sectionHeight, sectionWidth, sectionX, i, id)
+                return section
             })}
         </g>
     }
 
-    calculateSectionX(start, end, billStart, width) {
-        let s = new Date(start)
-        let e = new Date(end)
-        let bs = new Date(billStart)
-        e.setDate(e.getDate() + 10);
-        return width - ((e - bs) / (e - s) * (width))
-    }
-
-    createSection(bill, type, height, width, x, i, typeId) {
+    createSection(section, rowName, height, width, x, i, rowId) {
         return <Section
             key={i}
-            amount={bill.amount}
-            id={bill.id}
-            amountPerDay={bill.amountPerDay}
-            start={bill.start}
-            end={bill.end}
+            id={section.id}
             height={height}
             width={width}
             x={x}
-            type={type}
-            typeId={typeId}
+            y={0}
+            rowName={rowName}
+            rowId={rowId}
+            start={section.start}
+            end={section.end}
+            amount={section.amount}
         />
     }
 
-    calculateSectionWidth(start, end, billStart, billEnd, width) {
+    calculateSectionX(start, end, SectionStart, width) {
+        let s = new Date(start)
+        let e = new Date(end)
+        let ss = new Date(SectionStart)
+        e.setDate(e.getDate() + 10);
+        return width - ((e - ss) / (e - s) * (width))
+    }
+
+    calculateSectionWidth(start, end, SectionStart, sectionEnd, width) {
         let ts = Number(new Date(start))
         let te = Number(new Date(end))
-        let bs = Number(new Date(billStart))
-        let be = Number(new Date(billEnd))
-        return (be - bs) / (te - ts) * width
+        let ss = Number(new Date(SectionStart))
+        let se = Number(new Date(sectionEnd))
+        return (se - ss) / (te - ts) * width
     }
 
-    calculateSectionHeight(maxAmountPerDay, amountPerDay, height) {
-        return amountPerDay / maxAmountPerDay * height
+    calculateSectionHeight(maxSectionHeight, sectionHeight, height) {
+        return sectionHeight / maxSectionHeight * height
     }
 }
-
-
 
 export default Row;

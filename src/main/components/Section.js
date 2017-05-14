@@ -3,27 +3,27 @@ import React, { Component } from 'react'
 class Section extends Component {
   render() {
     // let id = this.props.id
-    // let amountPerDay = this.props.amountPerDay
     let amount = this.props.amount
     let start = this.props.start
     let end = this.props.end
-    let type = this.props.type
-    let typeId = this.props.typeId
+    let rowName = this.props.rowName
+    let rowId = this.props.rowId
     let height = this.props.height
     let width = this.props.width
     let x = this.props.x
-    return this.createSection(typeId, height, width, x, start, end, amount, type)
+    let y = this.props.y
+    return this.createSection(rowId, height, width, x, y, start, end, amount, rowName)
   }
 
-  createSection(typeId, height, width, x, start, end, amount, type) {
+  createSection(rowId, height, width, x, y, start, end, amount, rowName) {
     return <g
-      transform={"translate(" + x + ", 0)"}>
+      transform={"translate(" + x + ", " + y + ")"}>
       <rect
         height={height}
         width={width}
-        fill={this.getColor(typeId)}
+        fill={this.getColor(rowId)}
       >
-        <title>{type}, {amount}, {start.substring(0, 10)}-{end.substring(0, 10)}</title>
+        <title>{rowName}, {amount}, {start.substring(0, 10)}-{end.substring(0, 10)}</title>
       </rect>
     </g>
   }

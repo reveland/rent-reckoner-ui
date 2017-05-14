@@ -2,14 +2,6 @@ import React, { Component } from 'react';
 import Table from './Table'
 
 class TimeBoard extends Component {
-
-    constructor(props) {
-        super(props)
-        this.state = {
-            height: 0
-        }
-    }
-
     render() {
         let tables = this.props.tables
         let width = this.calculateWidth()
@@ -37,7 +29,7 @@ class TimeBoard extends Component {
         return <Table
             key={i}
             rows={table.rows}
-            sumMaxAmountPerDay={table.sumMaxAmountPerDay}
+            sumMaxSectionHeight={table.sumMaxSectionHeight}
             start={table.start}
             end={table.end}
             height={height}
