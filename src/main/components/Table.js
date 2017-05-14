@@ -32,19 +32,19 @@ class Table extends Component {
     </g>
   }
 
-  createRow(type, height, width, x, y, i) {
+  createRow(row, height, width, x, y, i) {
     return <Row
       key={i}
-      id={type.id}
-      sections={type.sections}
-      name={type.name}
-      maxSectionHeight={type.maxSectionHeight}
+      id={row.id}
+      sections={row.sections}
+      name={row.name}
+      maxSectionHeight={row.maxSectionHeight}
       height={height}
       width={width}
       x={x}
       y={y}
-      start={type.start}
-      end={type.end}
+      start={row.start}
+      end={row.end}
     />
   }
 

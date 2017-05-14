@@ -17,7 +17,6 @@ class Row extends Component {
     }
 
     createRow(sections, name, maxSectionHeight, height, width, x, y, start, end, id) {
-        console.log("row", x, y)
         return <g
             className="Row"
             transform={"translate(" + x + ", " + y + ")"}>
