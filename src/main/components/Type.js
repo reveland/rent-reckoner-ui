@@ -17,18 +17,26 @@ class Type extends Component {
     }
 
     createType(bills, name, maxAmountPerDay, height, width, x, y, start, end, id) {
-        let billX = 0
         return <g
             className="Type"
             transform={"translate(" + x + ", " + y + ")"}>
             {bills.map((bill, i) => {
                 let billWidth = this.calculateBillWidth(start, end, bill.start, bill.end, width)
                 let billHeight = this.calculateBillHeight(maxAmountPerDay, bill.amountPerDay, height)
+                let billX = this.calculateBillX(start, end, bill.start, width)
+                console.log(billWidth, billX)
                 bill = this.createBill(bill, name, billHeight, billWidth, billX, i, id)
-                billX += billWidth
                 return bill
             })}
         </g>
+    }
+
+    calculateBillX(start, end, billStart, width) {
+        let s = new Date(start)
+        let e = new Date(end)
+        let bs = new Date(billStart)
+        e.setDate(e.getDate() + 10);
+        return width - ((e - bs) / (e - s) * (width))
     }
 
     createBill(bill, type, height, width, x, i, typeId) {
