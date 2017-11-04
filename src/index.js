@@ -5,8 +5,8 @@ import './index.css';
 
 let habitation_id = 0
 
-var bills_url = 'http://localhost:5000/habitations/' + habitation_id + '/bills'
-var resident_url = 'http://localhost:5000/habitations/' + habitation_id + '/residents'
+var bills_url = 'http://limitless-stream-25117.herokuapp.com/habitations/' + habitation_id + '/bills'
+var resident_url = 'http://limitless-stream-25117.herokuapp.com/habitations/' + habitation_id + '/residents'
 
 let tables = []
 fetch(bills_url, {
