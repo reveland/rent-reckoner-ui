@@ -50,7 +50,7 @@ class Row extends Component {
         let s = new Date(start)
         let e = new Date(end)
         let ss = new Date(SectionStart)
-        e.setDate(e.getDate() + 10);
+        e.setDate(e.getDate());
         return width - ((e - ss) / (e - s) * (width))
     }
 
