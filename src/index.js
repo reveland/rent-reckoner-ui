@@ -4,9 +4,9 @@ import App from './main/App';
 import './index.css';
 
 let habitation_id = 1
-
-var bills_url = 'http://127.0.0.1:5000/habitations/' + habitation_id + '/bills_to_ui'
-var resident_url = 'http://127.0.0.1:5000/habitations/' + habitation_id + '/residents_to_ui'
+let base = 'https://agile-stream-12274.herokuapp.com/'
+let bills_url = base + habitation_id + '/bills_to_ui'
+let resident_url = base + habitation_id + '/residents_to_ui'
 
 let tables = []
 fetch(bills_url, {
