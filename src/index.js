@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import App from './main/App';
 import './index.css';
 
-let habitation_id = 0
+let habitation_id = 1
 
-var bills_url = 'https://limitless-stream-25117.herokuapp.com/habitations/' + habitation_id + '/bills'
-var resident_url = 'https://limitless-stream-25117.herokuapp.com/habitations/' + habitation_id + '/residents'
+var bills_url = 'http://127.0.0.1:5000/habitations/' + habitation_id + '/bills_to_ui'
+var resident_url = 'http://127.0.0.1:5000/habitations/' + habitation_id + '/residents_to_ui'
 
 let tables = []
 fetch(bills_url, {
